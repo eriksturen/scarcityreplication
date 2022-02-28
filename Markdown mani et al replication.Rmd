@@ -7,7 +7,6 @@ output:
                   <!-- NOTE -->
 <!-- KNITTING ONLY WORKS IN HTML FOR NOW.  -->
 
-**Test to see if markdown can be updated from Rstudio directly**
 
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = TRUE)
