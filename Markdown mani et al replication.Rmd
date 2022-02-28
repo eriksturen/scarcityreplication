@@ -1,0 +1,88 @@
+---
+title: "Analysis/results Replication of Mani et al. 2013 - For Open Science course"
+output:
+  html_document: default
+  pdf_document: default
+---
+                  <!-- NOTE -->
+<!-- KNITTING ONLY WORKS IN HTML FOR NOW.  -->
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+library(tidyverse)
+library(xtable)
+library(haven)
+library(sjmisc)
+```
+
+## R Markdown
+
+This is a document demonstrating how the analysis and results section of the replication paper will be conducted. Everything is adapted from the original Mani et al. (2013) paper.
+
+Three variables are added: the total_iq_score, a simple sum of the number of correct answers in the iq test, and a priming, which identifies if the participant saw the high (coded as 1) or low (coded as 0) priming. The last variable is whether the participant had a household income, divided by the square root of the household size, above (1) or below (0) the median income level (divided by household size) of the sample. This was used in the original study as a proxy for if the participants were "poor" or "rich". 
+
+```{r read_data, include=FALSE}
+
+#data is read 
+dataMani <- read_spss("~/replikeringen/Mani et al. 2013 replication_January 12, 2022_09.28.sav")
+#filter on everything after 2022-01-09 since data before that were tests.
+#data collection on prolific took place on 2022-01-10
+dataMani <- filter(dataMani, StartDate > "2022-01-09")
+
+#root_household_income is created, this is to use the same variables as in the original paper.
+dataMani <- dataMani %>% mutate(root_household_income = Q58/sqrt(Q59))
+#a binary variable for if root_household_income is above or below median of sample is created
+#this is taken directly from mani et als 2013 paper.
+dataMani <- dataMani %>% mutate(binary_root_household_income = 
+                       ifelse(root_household_income > median(root_household_income, na.rm=T), 1, 0))
+
+#also create binary grouping variable for if low or high priming
+#Q45, Q46, Q47 and Q49 are high priming
+#Q51, Q52, Q53 and Q55 are low priming
+
+#THIS IS CORRECTED 19 JAN 2022
+#High priming was given 0 in last version. Low priming 1. Now it is changed. Results are of course the same but the graph looked wrong. 
+#this makes it so that high priming (high costs in priming scenarios) get "priming = 1"
+dataMani <- dataMani %>% mutate(priming = 
+                                  ifelse(Q51 == "", 0, 1))
+
+#write_sav(dataMani, "~/replikeringen/mani et al data cleaned.sav")
+
+```
+
+In the original paper the main analysis of interest for the shopping mall study was a two-way ANOVA 
+so this is also used here, aov()-function is used. 
+
+
+
+
+## Temporary outline notes 
+
+## Introduction
+We tried to replicate experiment 4 from study 1 in mani et al (poverty impedes cognitive function) – the shopping mall study where people read each scenario and then responded to a IQ test. 
+## Methods
+We increased the sample size to 500 and collected via prolific.co. Different from original where they were collected in person in a shopping mall. 
+Only americans. Good spread of income level. 
+### Tests 
+Not ravens matrices but very similar – Hagen matrices (SOURCE HERE). Six rounds increasing difficulty. We note that this is different to original where they got 3 rounds randomly selected. 
+
+## Results
+We found no effects in an anova. 
+```{r analysis, include=TRUE, results='asis', echo =FALSE}
+#iq score is called SC0
+aov_mani <- aov(SC0 ~ priming+binary_root_household_income+ (binary_root_household_income*priming), dataMani)
+
+#xtable seems to work for automatically create the anova table 
+#The table and plot needs some work to make them prettier and most importantly change some labels so you can actually follow what's going on in them. 
+print(xtable(aov_mani), type = "html")
+
+
+boxplot(SC0 ~ priming * binary_root_household_income, data=dataMani, frame = FALSE, 
+        col = c("#00AFBB", "#E7B800"), ylab="SCORE")
+
+```
+
+
+## Discussion
+Perhaps something wrong with priming, perhaps it does not work. But it did in the original. Also - Bickel et al. (2016) managed to get effects with a somewhat similar priming (negative income shock in a short narrative text, participants asked to simply think about it for a while). This was on temporal discounting though, and not the IQ-effect described here. IQ-effect is probably not there. 
+
