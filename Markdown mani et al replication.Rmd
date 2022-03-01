@@ -1,8 +1,8 @@
 ---
 title: "Analysis/results Replication of Mani et al. 2013 - For Open Science course"
 output:
-  html_document: default
-  pdf_document: default
+  html_document: 
+    keep_md: true
 ---
                   <!-- NOTE -->
 <!-- KNITTING ONLY WORKS IN HTML FOR NOW.  -->
@@ -59,15 +59,15 @@ so this is also used here, aov()-function is used.
 
 ## Temporary outline notes 
 
-## Introduction
+### Introduction
 We tried to replicate experiment 4 from study 1 in mani et al (poverty impedes cognitive function) – the shopping mall study where people read each scenario and then responded to a IQ test. 
-## Methods
+### Methods
 We increased the sample size to 500 and collected via prolific.co. Different from original where they were collected in person in a shopping mall. 
 Only americans. Good spread of income level. 
-### Tests 
+#### Tests 
 Not ravens matrices but very similar – Hagen matrices (SOURCE HERE). Six rounds increasing difficulty. We note that this is different to original where they got 3 rounds randomly selected. 
 
-## Results
+### Results
 We found no effects in an anova. 
 ```{r analysis, include=TRUE, results='asis', echo =FALSE}
 #iq score is called SC0
@@ -84,6 +84,6 @@ boxplot(SC0 ~ priming * binary_root_household_income, data=dataMani, frame = FAL
 ```
 
 
-## Discussion
+### Discussion
 Perhaps something wrong with priming, perhaps it does not work. But it did in the original. Also - Bickel et al. (2016) managed to get effects with a somewhat similar priming (negative income shock in a short narrative text, participants asked to simply think about it for a while). This was on temporal discounting though, and not the IQ-effect described here. IQ-effect is probably not there. 
 
