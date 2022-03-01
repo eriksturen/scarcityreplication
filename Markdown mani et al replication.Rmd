@@ -12,6 +12,7 @@ knitr::opts_chunk$set(echo = TRUE)
 library(tidyverse)
 library(xtable)
 library(haven)
+library(scales)
 library(sjmisc)
 ```
 
@@ -86,9 +87,16 @@ print(xtable(aov_mani), type = "html")
 boxplot(SC0 ~ priming * binary_root_household_income, data=dataMani, frame = FALSE, 
         col = c("#00AFBB", "#E7B800"), ylab="SCORE")
 
+#In the branch we add a income density plot
+ggplot(dataMani, aes(x=Q58)) + geom_density()
+
 ```
 
+```{r densityplot, include=TRUE, results='asis', echo =FALSE}
+#In the branch we add a income density plot
+ggplot(dataMani, aes(x=Q58)) + geom_density()
 
+```
 ### Discussion
 Perhaps something wrong with priming, perhaps it does not work. But it did in the original. Also - Bickel et al. (2016) managed to get effects with a somewhat similar priming (negative income shock in a short narrative text, participants asked to simply think about it for a while). This was on temporal discounting though, and not the IQ-effect described here. IQ-effect is probably not there. 
 

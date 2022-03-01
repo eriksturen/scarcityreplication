@@ -36,7 +36,7 @@ Not ravens matrices but very similar – Hagen matrices (SOURCE HERE). Six round
 ### Results
 We found no effects in an anova. 
 <!-- html table generated in R 4.1.2 by xtable 1.8-4 package -->
-<!-- Tue Mar 01 12:33:37 2022 -->
+<!-- Tue Mar 01 15:12:38 2022 -->
 <table border=1>
 <tr> <th>  </th> <th> Df </th> <th> Sum Sq </th> <th> Mean Sq </th> <th> F value </th> <th> Pr(&gt;F) </th>  </tr>
   <tr> <td> priming </td> <td align="right"> 1 </td> <td align="right"> 3.86 </td> <td align="right"> 3.86 </td> <td align="right"> 1.46 </td> <td align="right"> 0.2276 </td> </tr>
@@ -45,9 +45,9 @@ We found no effects in an anova.
   <tr> <td> Residuals </td> <td align="right"> 496 </td> <td align="right"> 1310.26 </td> <td align="right"> 2.64 </td> <td align="right">  </td> <td align="right">  </td> </tr>
    </table>
 
-![](Markdown-mani-et-al-replication_files/figure-html/boxplot-1.png)<!-- -->
+![](Markdown-mani-et-al-replication_files/figure-html/boxplot-1.png)<!-- -->![](Markdown-mani-et-al-replication_files/figure-html/boxplot-2.png)<!-- -->
 
-
+![](Markdown-mani-et-al-replication_files/figure-html/densityplot-1.png)<!-- -->
 ### Discussion
 Perhaps something wrong with priming, perhaps it does not work. But it did in the original. Also - Bickel et al. (2016) managed to get effects with a somewhat similar priming (negative income shock in a short narrative text, participants asked to simply think about it for a while). This was on temporal discounting though, and not the IQ-effect described here. IQ-effect is probably not there. 
 
