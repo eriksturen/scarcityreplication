@@ -7,28 +7,49 @@ output:
     keep_md: true
 ---
 
-```{r setup, include=FALSE}
-knitr::opts_chunk$set(echo = TRUE)
+```{r read_data, include=FALSE}
+
+library(tidyverse)
+library(xtable)
+library(haven)
+library(sjmisc)
+
+#data is read 
+dataMani <- read_spss("~/replikeringen/Mani et al. 2013 replication_January 12, 2022_09.28.sav")
+#filter on everything after 2022-01-09 since data before that were tests.
+#data collection on prolific took place on 2022-01-10
+dataMani <- filter(dataMani, StartDate > "2022-01-09")
+
+#root_household_income is created, this is to use the same variables as in the original paper.
+dataMani <- dataMani %>% mutate(root_household_income = Q58/sqrt(Q59))
+#a binary variable for if root_household_income is above or below median of sample is created
+#this is taken directly from mani et als 2013 paper.
+dataMani <- dataMani %>% mutate(binary_root_household_income = 
+                       ifelse(root_household_income > median(root_household_income, na.rm=T), 1, 0))
+
+#also create binary grouping variable for if low or high priming
+#Q45, Q46, Q47 and Q49 are high priming
+#Q51, Q52, Q53 and Q55 are low priming
+
+#THIS IS CORRECTED 19 JAN 2022
+#High priming was given 0 in last version. Low priming 1. Now it is changed. Results are of course the same but the graph looked wrong. 
+#this makes it so that high priming (high costs in priming scenarios) get "priming = 1"
+dataMani <- dataMani %>% mutate(priming = 
+                                  ifelse(Q51 == "", 0, 1))
+
+#write_sav(dataMani, "~/replikeringen/mani et al data cleaned.sav")
+
 ```
+```{r analysis, include=TRUE, results='asis', echo =FALSE}
+#iq score is called SC0
+aov_mani <- aov(SC0 ~ priming+binary_root_household_income+ (binary_root_household_income*priming), dataMani)
+
+#xtable seems to work for automatically create the anova table 
+#The table and plot needs some work to make them prettier and most importantly change some labels so you can actually follow what's going on in them. 
+print(xtable(aov_mani), type = "html")
 
 
+boxplot(SC0 ~ priming * binary_root_household_income, data=dataMani, frame = FALSE, 
+        col = c("#00AFBB", "#E7B800"), ylab="SCORE")
 
-## R Markdown
-
-This is an R Markdown document written for a tutorial on using Markdown, GitHub and combining this with RStudio. Markdown is a simple formatting syntax for authoring HTML, PDF, and MS Word documents. For more details on using R Markdown see <http://rmarkdown.rstudio.com>.
-
-When you click the **Knit** button a document will be generated that includes both content as well as the output of any embedded R code chunks within the document. You can embed an R code chunk like this:
-
-```{r cars}
-summary(cars)
 ```
-
-## Including Plots
-
-You can also embed plots, for example:
-
-```{r pressure, echo=FALSE}
-plot(pressure)
-```
-
-Note that the `echo = FALSE` parameter was added to the code chunk to prevent printing of the R code that generated the plot.
