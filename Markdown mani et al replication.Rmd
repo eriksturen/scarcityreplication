@@ -4,7 +4,6 @@ output:
   html_document: 
     keep_md: true
 ---
-                  <!-- NOTE -->
 <!-- KNITTING ONLY WORKS IN HTML FOR NOW.  -->
 
 
@@ -78,6 +77,11 @@ aov_mani <- aov(SC0 ~ priming+binary_root_household_income+ (binary_root_househo
 print(xtable(aov_mani), type = "html")
 
 
+```
+
+```{r boxplot, include=TRUE, results='asis', echo =FALSE}
+#testing with the plot in a separate chunk. 
+#purpose is to see if it shows up in .md file on github
 boxplot(SC0 ~ priming * binary_root_household_income, data=dataMani, frame = FALSE, 
         col = c("#00AFBB", "#E7B800"), ylab="SCORE")
 

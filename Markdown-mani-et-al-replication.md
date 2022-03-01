@@ -4,7 +4,6 @@ output:
   html_document: 
     keep_md: true
 ---
-                  <!-- NOTE -->
 <!-- KNITTING ONLY WORKS IN HTML FOR NOW.  -->
 
 
@@ -26,18 +25,18 @@ so this is also used here, aov()-function is used.
 
 ## Temporary outline notes 
 
-## Introduction
+### Introduction
 We tried to replicate experiment 4 from study 1 in mani et al (poverty impedes cognitive function) – the shopping mall study where people read each scenario and then responded to a IQ test. 
-## Methods
+### Methods
 We increased the sample size to 500 and collected via prolific.co. Different from original where they were collected in person in a shopping mall. 
 Only americans. Good spread of income level. 
-### Tests 
+#### Tests 
 Not ravens matrices but very similar – Hagen matrices (SOURCE HERE). Six rounds increasing difficulty. We note that this is different to original where they got 3 rounds randomly selected. 
 
-## Results
+### Results
 We found no effects in an anova. 
 <!-- html table generated in R 4.1.2 by xtable 1.8-4 package -->
-<!-- Tue Mar 01 12:28:23 2022 -->
+<!-- Tue Mar 01 12:33:37 2022 -->
 <table border=1>
 <tr> <th>  </th> <th> Df </th> <th> Sum Sq </th> <th> Mean Sq </th> <th> F value </th> <th> Pr(&gt;F) </th>  </tr>
   <tr> <td> priming </td> <td align="right"> 1 </td> <td align="right"> 3.86 </td> <td align="right"> 3.86 </td> <td align="right"> 1.46 </td> <td align="right"> 0.2276 </td> </tr>
@@ -45,9 +44,10 @@ We found no effects in an anova.
   <tr> <td> priming:binary_root_household_income </td> <td align="right"> 1 </td> <td align="right"> 2.77 </td> <td align="right"> 2.77 </td> <td align="right"> 1.05 </td> <td align="right"> 0.3062 </td> </tr>
   <tr> <td> Residuals </td> <td align="right"> 496 </td> <td align="right"> 1310.26 </td> <td align="right"> 2.64 </td> <td align="right">  </td> <td align="right">  </td> </tr>
    </table>
-![](Markdown-mani-et-al-replication_files/figure-html/analysis-1.png)<!-- -->
+
+![](Markdown-mani-et-al-replication_files/figure-html/boxplot-1.png)<!-- -->
 
 
-## Discussion
+### Discussion
 Perhaps something wrong with priming, perhaps it does not work. But it did in the original. Also - Bickel et al. (2016) managed to get effects with a somewhat similar priming (negative income shock in a short narrative text, participants asked to simply think about it for a while). This was on temporal discounting though, and not the IQ-effect described here. IQ-effect is probably not there. 
 
