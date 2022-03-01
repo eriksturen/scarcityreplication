@@ -23,7 +23,7 @@ This is a document demonstrating how the analysis and results section of the rep
 Three variables are added: the total_iq_score, a simple sum of the number of correct answers in the iq test, and a priming, which identifies if the participant saw the high (coded as 1) or low (coded as 0) priming. The last variable is whether the participant had a household income, divided by the square root of the household size, above (1) or below (0) the median income level (divided by household size) of the sample. This was used in the original study as a proxy for if the participants were "poor" or "rich". 
 
 ```{r read_data, include=FALSE}
-
+options(scipen=999)
 #data is read 
 dataMani <- read_spss("~/replikeringen/Mani et al. 2013 replication_January 12, 2022_09.28.sav")
 #filter on everything after 2022-01-09 since data before that were tests.
@@ -92,11 +92,6 @@ ggplot(dataMani, aes(x=Q58)) + geom_density()
 
 ```
 
-```{r densityplot, include=TRUE, results='asis', echo =FALSE}
-#In the branch we add a income density plot
-ggplot(dataMani, aes(x=Q58)) + geom_density()
-
-```
 ### Discussion
 Perhaps something wrong with priming, perhaps it does not work. But it did in the original. Also - Bickel et al. (2016) managed to get effects with a somewhat similar priming (negative income shock in a short narrative text, participants asked to simply think about it for a while). This was on temporal discounting though, and not the IQ-effect described here. IQ-effect is probably not there. 
 
