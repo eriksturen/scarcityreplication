@@ -6,4 +6,4 @@ This project also has a connected OSF-page where data collection materials such 
 
 Note that this repository was created mainly as a part of a university course in using github and markdown. We are still learning. If anything seems unclear or is obviously wrong, please let us know. The whole point of keeping our process open is that someone might spot errors that we have missed. 
 
-**~~Change made on GitHub~~ and reverted**
+
