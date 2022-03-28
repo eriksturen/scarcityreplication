@@ -3,40 +3,64 @@ title: "Analysis/results Replication of Mani et al. 2013 - For Open Science cour
 output:
   html_document: 
     keep_md: true
+bibliography: references.bib
+editor_options: 
+  markdown: 
+    wrap: sentence
 ---
+
 <!-- KNITTING ONLY WORKS IN HTML FOR NOW.  -->
 
 
 
+## Introduction
 
-## R Markdown
+Over the past ten years, scarcity has been investigated in terms of how it changes people's way they think and behave.
+Scarcity relates to having less than people feel they need and can be experienced in various contexts -- lack of money, food, time or even company of others [@mullainathan2013]. Previous research suggested that not having enough resources -- money -- can create a cognitive load which leads to decreased cognitive performance [@mani_poverty_2013]. Thus, scarcity may lead to a greater engagement and focus on particular problems and in turn lead to neglect of other issues. For example, poorer people tend to make worse financial decisions which can be because they focus on solving their financial problems that they are facing in that moment, disregarding the ones they might run into later [@shah_consequences_2012]. In the following paper, we focus on one particular scarcity context -- money. @mani_poverty_2013 argued that being poorer may impose the cognitive load which hinders cognitive capacity. Researchers devised a laboratory experiment that took place in local shopping mall. Participants were asked about their annual household income, were induced with thoughts about their possible financial hardships by reading hypothetical financial scenarios (vignettes) and performed Raven's IQ test (three trials) and Stroop test to measure cognitive functions. They were randomly assigned to either "hard" financial condition (scenarios that included relatively high costs) or "easy" financial condition (scenarios that included relatively low costs). @mani2013 used a median split to assign participants to income groups: poor and rich. Those poorer scored lower in cognitive function tasks under the "hard" condition than those who were richer. The authors suggest the effects should not be limited only to economic resources. Rather, they argued that this is a general way of human resource judgment. However, some question the reliability of presented claims. @wicherts2013 argued that using median split to analyse the income was unnecessary as such practice is not only linked to lower power and possible loss of individual differences information but also it is unable to indicate nonlinear relations (MacCallum et al, 2002). By performing linear regression analysis on the original data using a mean-centred income they investigated interactions between the income and financial scenario. There was no significant interaction found. Additionally, @wicherts2013 raised some concerns about ceiling effects, most likely caused by short measures of cognitive functions.
 
-This is a document demonstrating how the analysis and results section of the replication paper will be conducted. Everything is adapted from the original Mani et al. (2013) paper.
+More recently, @odonnell2021 attempted to replicate the @mani_poverty_2013 study.
+They indicated it was largely underpowered (only 6%).
+Replication had higher power (32%), but effect sizes were almost negligible, comparing to the original (Cohen's d between 0.88 and 0.94).
+@odonnell2021 estimated that to obtain 80% power sample size would have to reach 13,500 participants -- Mani et al's.
+(2013) sample size was 101.
+In the present article, we aim to replicate the @mani_poverty_2013 study fixing some issues pointed out above.
+Replication of the @mani_poverty_2013 study is important for few reasons.
+Firstly, some theoretical propositions have been made, where researchers from different areas tried to build up on the original findings.
+To our knowledge, the only replication failed to corroborate the original results.
+A successful replication could provide some ways forward in understanding how people treat general resources in the area of judgement and decision making psychology.
+Secondly, if the claims are true, they could have important implications for policies regarding poverty, e.g. programs that aim to bring people out of the poverty would have to be redesigned to meet participants needs.
+This is why, we hope to replicate the results of the shopping mall experiment in @mani_poverty_2013.
+We aimed to demonstrate IQ reduction among poor people presented with the large expense scenarios.
+Thus, their IQ scores should be the lowest among all tested groups.
+We followed the procedure, materials and statistical analysis used in the original study.
+Our sample was similar, but bigger to increase statistical power.
+However, we used different IQ test and omitted Stroop test.
+Lastly, due to Covid-19 pandemics, we were forced to conduct the experiment online.
+Despite those differences, we believed they did not have a large impact on the overall results.
 
-Three variables are added: the total_iq_score, a simple sum of the number of correct answers in the iq test, and a priming, which identifies if the participant saw the high (coded as 1) or low (coded as 0) priming. The last variable is whether the participant had a household income, divided by the square root of the household size, above (1) or below (0) the median income level (divided by household size) of the sample. This was used in the original study as a proxy for if the participants were "poor" or "rich". 
 
 
+In the original paper the main analysis of interest for the shopping mall study was a two-way ANOVA so this is also used here, aov()-function is used.
 
-In the original paper the main analysis of interest for the shopping mall study was a two-way ANOVA 
-so this is also used here, aov()-function is used. 
-
-
-
-
-## Temporary outline notes 
+## Temporary outline notes
 
 ### Introduction
-We tried to replicate experiment 4 from study 1 in mani et al (poverty impedes cognitive function) – the shopping mall study where people read each scenario and then responded to a IQ test. 
-### Methods
-We increased the sample size to 500 and collected via prolific.co. Different from original where they were collected in person in a shopping mall. 
-Only americans. Good spread of income level. 
-#### Tests 
-Not ravens matrices but very similar – Hagen matrices (SOURCE HERE). Six rounds increasing difficulty. We note that this is different to original where they got 3 rounds randomly selected. 
+
+We tried to replicate experiment 4 from study 1 in mani et al (poverty impedes cognitive function) -- the shopping mall study where people read each scenario and then responded to a IQ test.
+### Methods We increased the sample size to 500 and collected via prolific.co.
+Different from original where they were collected in person in a shopping mall.
+Only americans.
+Good spread of income level.
+###\# Tests Not ravens matrices but very similar -- Hagen matrices (SOURCE HERE).
+Six rounds increasing difficulty.
+We note that this is different to original where they got 3 rounds randomly selected.
 
 ### Results
-We found no effects in an anova. 
+
+We found no effects in an anova.
+
 <!-- html table generated in R 4.1.2 by xtable 1.8-4 package -->
-<!-- Tue Mar 01 15:15:30 2022 -->
+<!-- Mon Mar 28 10:57:33 2022 -->
 <table border=1>
 <tr> <th>  </th> <th> Df </th> <th> Sum Sq </th> <th> Mean Sq </th> <th> F value </th> <th> Pr(&gt;F) </th>  </tr>
   <tr> <td> priming </td> <td align="right"> 1 </td> <td align="right"> 3.86 </td> <td align="right"> 3.86 </td> <td align="right"> 1.46 </td> <td align="right"> 0.2276 </td> </tr>
@@ -48,5 +72,9 @@ We found no effects in an anova.
 ![](Markdown-mani-et-al-replication_files/figure-html/boxplot-1.png)<!-- -->![](Markdown-mani-et-al-replication_files/figure-html/boxplot-2.png)<!-- -->
 
 ### Discussion
-Perhaps something wrong with priming, perhaps it does not work. But it did in the original. Also - Bickel et al. (2016) managed to get effects with a somewhat similar priming (negative income shock in a short narrative text, participants asked to simply think about it for a while). This was on temporal discounting though, and not the IQ-effect described here. IQ-effect is probably not there. 
 
+Perhaps something wrong with priming, perhaps it does not work.
+But it did in the original.
+Also - Bickel et al. (2016) managed to get effects with a somewhat similar priming (negative income shock in a short narrative text, participants asked to simply think about it for a while).
+This was on temporal discounting though, and not the IQ-effect described here.
+IQ-effect is probably not there.

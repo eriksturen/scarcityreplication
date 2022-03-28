@@ -56,6 +56,28 @@ if (window.hljs) {
 
 
 
+<style type="text/css">
+/* for pandoc --citeproc since 2.11 */
+div.csl-bib-body { }
+div.csl-entry {
+  clear: both;
+}
+.hanging div.csl-entry {
+  margin-left:2em;
+  text-indent:-2em;
+}
+div.csl-left-margin {
+  min-width:2em;
+  float:left;
+}
+div.csl-right-inline {
+  margin-left:2em;
+  padding-left:1em;
+}
+div.csl-indent {
+  margin-left: 2em;
+}
+</style>
 
 
 
@@ -169,21 +191,23 @@ pre code {
 
 
 <!-- KNITTING ONLY WORKS IN HTML FOR NOW.  -->
-<div id="r-markdown" class="section level2">
-<h2>R Markdown</h2>
-<p>This is a document demonstrating how the analysis and results section of the replication paper will be conducted. Everything is adapted from the original Mani et al. (2013) paper.</p>
-<p>Three variables are added: the total_iq_score, a simple sum of the number of correct answers in the iq test, and a priming, which identifies if the participant saw the high (coded as 1) or low (coded as 0) priming. The last variable is whether the participant had a household income, divided by the square root of the household size, above (1) or below (0) the median income level (divided by household size) of the sample. This was used in the original study as a proxy for if the participants were “poor” or “rich”.</p>
+<div id="introduction" class="section level2">
+<h2>Introduction</h2>
+<p>Over the past ten years, scarcity has been investigated in terms of how it changes people’s way they think and behave. Scarcity relates to having less than people feel they need and can be experienced in various contexts – lack of money, food, time or even company of others <span class="citation">(Mullainathan and Shafir 2013)</span>. Previous research suggested that not having enough resources – money – can create a cognitive load which leads to decreased cognitive performance <span class="citation">(Mani et al. 2013a)</span>. Thus, scarcity may lead to a greater engagement and focus on particular problems and in turn lead to neglect of other issues. For example, poorer people tend to make worse financial decisions which can be because they focus on solving their financial problems that they are facing in that moment, disregarding the ones they might run into later <span class="citation">(Shah, Mullainathan, and Shafir 2012)</span>. In the following paper, we focus on one particular scarcity context – money. <span class="citation">Mani et al. (2013a)</span> argued that being poorer may impose the cognitive load which hinders cognitive capacity. Researchers devised a laboratory experiment that took place in local shopping mall. Participants were asked about their annual household income, were induced with thoughts about their possible financial hardships by reading hypothetical financial scenarios (vignettes) and performed Raven’s IQ test (three trials) and Stroop test to measure cognitive functions. They were randomly assigned to either “hard” financial condition (scenarios that included relatively high costs) or “easy” financial condition (scenarios that included relatively low costs). <span class="citation">Mani et al. (2013b)</span> used a median split to assign participants to income groups: poor and rich. Those poorer scored lower in cognitive function tasks under the “hard” condition than those who were richer. The authors suggest the effects should not be limited only to economic resources. Rather, they argued that this is a general way of human resource judgment. However, some question the reliability of presented claims. <span class="citation">Wicherts and Scholten (2013)</span> argued that using median split to analyse the income was unnecessary as such practice is not only linked to lower power and possible loss of individual differences information but also it is unable to indicate nonlinear relations (MacCallum et al, 2002). By performing linear regression analysis on the original data using a mean-centred income they investigated interactions between the income and financial scenario. There was no significant interaction found. Additionally, <span class="citation">Wicherts and Scholten (2013)</span> raised some concerns about ceiling effects, most likely caused by short measures of cognitive functions.</p>
+<p>More recently, <span class="citation">O’Donnell et al. (2021)</span> attempted to replicate the <span class="citation">Mani et al. (2013a)</span> study. They indicated it was largely underpowered (only 6%). Replication had higher power (32%), but effect sizes were almost negligible, comparing to the original (Cohen’s d between 0.88 and 0.94). <span class="citation">O’Donnell et al. (2021)</span> estimated that to obtain 80% power sample size would have to reach 13,500 participants – Mani et al’s. (2013) sample size was 101. In the present article, we aim to replicate the <span class="citation">Mani et al. (2013a)</span> study fixing some issues pointed out above. Replication of the <span class="citation">Mani et al. (2013a)</span> study is important for few reasons. Firstly, some theoretical propositions have been made, where researchers from different areas tried to build up on the original findings. To our knowledge, the only replication failed to corroborate the original results. A successful replication could provide some ways forward in understanding how people treat general resources in the area of judgement and decision making psychology. Secondly, if the claims are true, they could have important implications for policies regarding poverty, e.g. programs that aim to bring people out of the poverty would have to be redesigned to meet participants needs. This is why, we hope to replicate the results of the shopping mall experiment in <span class="citation">Mani et al. (2013a)</span>. We aimed to demonstrate IQ reduction among poor people presented with the large expense scenarios. Thus, their IQ scores should be the lowest among all tested groups. We followed the procedure, materials and statistical analysis used in the original study. Our sample was similar, but bigger to increase statistical power. However, we used different IQ test and omitted Stroop test. Lastly, due to Covid-19 pandemics, we were forced to conduct the experiment online. Despite those differences, we believed they did not have a large impact on the overall results.</p>
 <p>In the original paper the main analysis of interest for the shopping mall study was a two-way ANOVA so this is also used here, aov()-function is used.</p>
 </div>
 <div id="temporary-outline-notes" class="section level2">
 <h2>Temporary outline notes</h2>
-<div id="introduction" class="section level3">
+<div id="introduction-1" class="section level3">
 <h3>Introduction</h3>
 <p>We tried to replicate experiment 4 from study 1 in mani et al (poverty impedes cognitive function) – the shopping mall study where people read each scenario and then responded to a IQ test. ### Methods We increased the sample size to 500 and collected via prolific.co. Different from original where they were collected in person in a shopping mall. Only americans. Good spread of income level. #### Tests Not ravens matrices but very similar – Hagen matrices (SOURCE HERE). Six rounds increasing difficulty. We note that this is different to original where they got 3 rounds randomly selected.</p>
 </div>
 <div id="results" class="section level3">
 <h3>Results</h3>
-We found no effects in an anova. <!-- html table generated in R 4.1.2 by xtable 1.8-4 package --> <!-- Tue Mar 01 15:15:30 2022 -->
+<p>We found no effects in an anova.</p>
+<!-- html table generated in R 4.1.2 by xtable 1.8-4 package -->
+<!-- Mon Mar 28 10:57:33 2022 -->
 <table border="1">
 <tr>
 <th>
@@ -288,6 +312,26 @@ Residuals
 <div id="discussion" class="section level3">
 <h3>Discussion</h3>
 <p>Perhaps something wrong with priming, perhaps it does not work. But it did in the original. Also - Bickel et al. (2016) managed to get effects with a somewhat similar priming (negative income shock in a short narrative text, participants asked to simply think about it for a while). This was on temporal discounting though, and not the IQ-effect described here. IQ-effect is probably not there.</p>
+<div id="refs" class="references csl-bib-body hanging-indent">
+<div id="ref-mani_poverty_2013" class="csl-entry">
+Mani, A., S. Mullainathan, E. Shafir, and J. Zhao. 2013a. <span>“Poverty <span>Impedes</span> <span>Cognitive</span> <span>Function</span>.”</span> <em>Science</em> 341 (6149): 976–80. <a href="https://doi.org/10.1126/science.1238041">https://doi.org/10.1126/science.1238041</a>.
+</div>
+<div id="ref-mani2013" class="csl-entry">
+———. 2013b. <span>“Poverty Impedes Cognitive Function.”</span> <em>Science</em> 341 (6149): 976–80. <a href="https://doi.org/10.1126/science.1238041">https://doi.org/10.1126/science.1238041</a>.
+</div>
+<div id="ref-mullainathan2013" class="csl-entry">
+Mullainathan, Sendhil, and Eldar Shafir. 2013. <em>Scarcity : Why Having Too Little Means so Much</em>. First edition. New York : Picador, Henry Holt; Company.
+</div>
+<div id="ref-odonnell2021" class="csl-entry">
+O’Donnell, Michael, Amelia S. Dev, Stephen Antonoplis, Stephen M. Baum, Arianna H. Benedetti, N. Derek Brown, Belinda Carrillo, et al. 2021. <span>“Empirical Audit and Review and an Assessment of Evidentiary Value in Research on the Psychological Consequences of Scarcity.”</span> <em>Proceedings of the National Academy of Sciences</em> 118 (44): e2103313118. <a href="https://doi.org/10.1073/pnas.2103313118">https://doi.org/10.1073/pnas.2103313118</a>.
+</div>
+<div id="ref-shah_consequences_2012" class="csl-entry">
+Shah, A., S. Mullainathan, and E. Shafir. 2012. <span>“Some <span>Consequences</span> of <span>Having</span> <span>Too</span> <span>Little</span>.”</span> <em>Science</em> 338 (6107): 682–85. <a href="https://doi.org/10.1126/science.1222426">https://doi.org/10.1126/science.1222426</a>.
+</div>
+<div id="ref-wicherts2013" class="csl-entry">
+Wicherts, J. M., and A. Z. Scholten. 2013. <span>“Comment on <span>&quot;</span>Poverty Impedes Cognitive Function<span>&quot;</span>.”</span> <em>Science</em> 342 (6163): 1169–69. <a href="https://doi.org/10.1126/science.1246680">https://doi.org/10.1126/science.1246680</a>.
+</div>
+</div>
 </div>
 </div>
 
